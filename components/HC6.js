@@ -1,4 +1,5 @@
 import React from "react";
+import { IoIosArrowForward } from "react-icons/io";
 
 const HC6 = () => {
   const [data, setData] = React.useState([]);
@@ -9,21 +10,18 @@ const HC6 = () => {
         setData(data.card_groups);
       });
   }, []);
-  console.log(data);
+  //   console.log(data);
 
   return (
     <>
-      <div className="flex justify-start items-center px-4 w-11/12 mx-auto">
+      <div className="flex bg-gray-100 my-3 rounded-lg ml-3 py-3 justify-start items-center px-4 w-11/12 container">
         <img
           src={data.length ? data[0].cards[0].icon.image_url : ""}
           className="h-16 w-auto"
         />
         Small Card with Arrow
         <div className="ml-auto">
-          <img
-            src={data.length ? data[0].cards[0].icon.image_url : ""}
-            className="h-8 w-auto justify-self-end"
-          />
+          <IoIosArrowForward className="h-6 w-6" />
         </div>
       </div>
     </>
