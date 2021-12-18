@@ -59,7 +59,8 @@ const HC9 = () => {
                 <img
                   src={item.bg_image.image_url}
                   alt={item.bg_image.image_type}
-                  className="h-60 max-w-none"
+                  className="max-w-none"
+                  style={{ height: data[1].height }}
                 />
               </a>
             </div>

@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLongPress } from "use-long-press";
+import { AiTwotoneBell } from "react-icons/ai";
+import { ImCross } from "react-icons/im";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -31,8 +33,12 @@ export default function Home() {
             show ? "flex" : "hidden"
           } m-auto my-3 flex-col w-3/12 bg-cover p-3 justify-center rounded-xl h-96 items-center gap-y-10`}
         >
-          <button>B1</button>
-          <button>B2</button>
+          <button className="bg-gray-100 p-3 rounded-xl">
+            <AiTwotoneBell className="text-my-yellow h-6 w-6" />
+          </button>
+          <button className="bg-gray-100 p-3 rounded-xl">
+            <ImCross className="text-my-yellow h-6 w-6" />
+          </button>
         </div>
         <div
           style={{
