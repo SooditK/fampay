@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLongPress } from "use-long-press";
+import { AiTwotoneBell } from "react-icons/ai";
+import { ImCross } from "react-icons/im";
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -12,12 +14,16 @@ export default function Home() {
         setData(data.card_groups);
       });
   }, []);
-  console.log(data);
+  // console.log(data);
 
   const bind = useLongPress(() => {
     console.log("Long pressed!");
     setShow(true);
   });
+
+  const handleShow = () => {
+    setShow(false);
+  };
 
   return (
     <>
@@ -27,8 +33,12 @@ export default function Home() {
             show ? "flex" : "hidden"
           } m-auto my-3 flex-col w-3/12 bg-cover p-3 justify-center rounded-xl h-96 items-center gap-y-10`}
         >
-          <button>B1</button>
-          <button>B2</button>
+          <button className="bg-gray-100 p-3 rounded-xl">
+            <AiTwotoneBell className="text-my-yellow h-6 w-6" />
+          </button>
+          <button className="bg-gray-100 p-3 rounded-xl">
+            <ImCross className="text-my-yellow h-6 w-6" />
+          </button>
         </div>
         <div
           style={{
@@ -41,7 +51,7 @@ export default function Home() {
                 : "",
           }}
           className={`flex m-auto my-3 flex-col ${
-            show ? "w-9/12" : "w-11/12"
+            show ? "w-9/12" : "w-full"
           } bg-cover p-3 justify-end rounded-xl h-96 items-start`}
           {...bind}
         >
@@ -52,6 +62,7 @@ export default function Home() {
             <p>{data.length ? data[6].cards[0].description : "Loading"}</p>
             <button
               type="button"
+              onClick={handleShow}
               className="py-2 px-6 self-start bg-black focus:ring-black focus:ring-offset-black text-white text-center font-semibold shadow-md focus:ring-2 focus:ring-offset-2 rounded-lg "
             >
               Action

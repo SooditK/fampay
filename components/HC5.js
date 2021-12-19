@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from "react";
-import NextImage from "next/image";
 
-const HC9 = () => {
-  const slider = useRef(null);
+const HC5 = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const slider = useRef(null);
   useEffect(() => {
     fetch("https://run.mocky.io/v3/04a04703-5557-4c84-a127-8c55335bb3b4")
       .then((response) => response.json())
@@ -13,6 +12,7 @@ const HC9 = () => {
         setLoading(false);
       });
   }, []);
+  console.log(data);
   let mouseDown = false;
   let startX, scrollLeft;
 
@@ -40,28 +40,24 @@ const HC9 = () => {
   return (
     <div
       ref={slider}
-      className="flex gap-x-6 overflow-x-auto w-full"
+      className="flex container gap-x-6 overflow-x-auto w-full snap-x"
       onMouseDown={startDragging}
       onMouseUp={stopDragging}
       onMouseLeave={stopDragging}
       onMouseMove={mouseMoveEvent}
     >
       {!loading ? (
-        data[1].cards.map((item, i) => {
+        data[4].cards.map((item, i) => {
           return (
             <div key={i} className="whitespace-nowrap w-full snap-center">
-              <a
-                href={item.url}
-                target="_blank"
-                rel="noreferrer"
-                className="w-auto"
-              >
-                <img
-                  src={item.bg_image.image_url}
-                  alt={item.bg_image.image_type}
-                  className="max-w-none"
-                  style={{ height: data[1].height }}
-                />
+              <a href={item.url} target="_blank" rel="noreferrer">
+                <div
+                  style={{
+                    backgroundImage: `url(${item.bg_image.image_url})`,
+                    width: "85vw",
+                  }}
+                  className="flex h-40 bg-cover w-full bg-gray-100 my-3 break-words rounded-lg ml-3 py-3 justify-start items-center px-4 container"
+                ></div>
               </a>
             </div>
           );
@@ -73,4 +69,4 @@ const HC9 = () => {
   );
 };
 
-export default HC9;
+export default HC5;
